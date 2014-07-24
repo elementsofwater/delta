@@ -78,12 +78,11 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-#production:
-#  <<: *default
-#  database: delta_production
-#  username: delta
-#  password: <%= ENV['DELTA_DATABASE_PASSWORD'] %>
-
+production:
+  <<: *default
+  database: delta_production
+  username: delta
+  password: <%= ENV['DELTA_DATABASE_PASSWORD'] %>
 local: &local
   adapter: postgresql
   username: iryna
