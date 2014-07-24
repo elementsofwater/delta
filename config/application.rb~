@@ -28,4 +28,3 @@ module Delta
       g.fixture_replacement :factory_girl, :dir => 'spec/factirues'
   end
 end
-end
