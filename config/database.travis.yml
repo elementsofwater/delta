@@ -86,7 +86,7 @@ test:
 
 local: &local
   adapter: postgresql
-  username: iryna
+  username: postgres
   password:
   host: localhost
 
