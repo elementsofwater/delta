@@ -19,5 +19,13 @@ module Delta
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    config.generators do |g|
+      g.test_framework :rspec, :view_specs => false,
+                       :fixture => true,
+                       :fixture_replacement => "factory_girl"
+      g.assets = false
+      g.helper = false
+      g.fixture_replacement :factory_girl, :dir => 'spec/factirues'
   end
+end
 end

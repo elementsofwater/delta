@@ -1,15 +1,15 @@
 # PostgreSQL. Versions 8.2 and up are supported.
 #
 # Install the pg driver:
-#   gem install pg
+# gem install pg
 # On OS X with Homebrew:
-#   gem install pg -- --with-pg-config=/usr/local/bin/pg_config
+# gem install pg -- --with-pg-config=/usr/local/bin/pg_config
 # On OS X with MacPorts:
-#   gem install pg -- --with-pg-config=/opt/local/lib/postgresql84/bin/pg_config
+# gem install pg -- --with-pg-config=/opt/local/lib/postgresql84/bin/pg_config
 # On Windows:
-#   gem install pg
-#       Choose the win32 build.
-#       Install PostgreSQL and put its /bin directory on your path.
+# gem install pg
+# Choose the win32 build.
+# Install PostgreSQL and put its /bin directory on your path.
 #
 # Configure Using Gemfile
 # gem 'pg'
@@ -47,8 +47,8 @@ development:
   #schema_search_path: myapp,sharedapp,public
 
   # Minimum log levels, in increasing order:
-  #   debug5, debug4, debug3, debug2, debug1,
-  #   log, notice, warning, error, fatal, and panic
+  # debug5, debug4, debug3, debug2, debug1,
+  # log, notice, warning, error, fatal, and panic
   # Defaults to warning.
   #min_messages: notice
 
@@ -71,15 +71,33 @@ test:
 # On Heroku and other platform providers, you may have a full connection URL
 # available as an environment variable. For example:
 #
-#   DATABASE_URL="postgres://myuser:mypass@localhost/somedatabase"
+# DATABASE_URL="postgres://myuser:mypass@localhost/somedatabase"
 #
 # You can use this database configuration with:
 #
-#   production:
-#     url: <%= ENV['DATABASE_URL'] %>
+# production:
+# url: <%= ENV['DATABASE_URL'] %>
 #
+#production:
+# <<: *default
+# database: delta_production
+# username: delta
+# password: <%= ENV['DELTA_DATABASE_PASSWORD'] %>
+
+local: &local
+  adapter: postgresql
+  username: postgres
+  password:
+  host: localhost
+
+development:
+  <<: *local
+  database: delta_dev
+
+test:
+  <<: *local
+  database: delta_test
+
 production:
-  <<: *default
+  <<: *local
   database: delta_production
-  username: delta
-  password: <%= ENV['DELTA_DATABASE_PASSWORD'] %>

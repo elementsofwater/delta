@@ -38,3 +38,21 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+group :development, :test do
+  gem 'pry-rails'
+  gem 'pry'
+  gem 'pry-nav'
+  gem 'pry-remote'
+  gem 'factory_girl_rails'
+  gem 'faker', '~>1.2.0'
+end
+
+
+group :test do
+  gem 'rspec-rails'
+  gem 'spork'
+  gem 'database_cleaner'
+  gem 'shoulda-matchers'
+  gem 'webmock'
+end
+
