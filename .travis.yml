@@ -13,3 +13,9 @@ script:
 before_script:
   - cp config/database.travis.yml config/database.yml
   - psql -c 'create database delta_bd' -U postgres
+
+deploy:
+  provider: heroku
+  api_key: 432ba97d-eaed-4fde-99a7-2e116ec94c74
+  app: delta
+  run: "rake db:migrate"
